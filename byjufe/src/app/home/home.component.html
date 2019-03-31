@@ -1,0 +1,67 @@
+<div class="container">
+  <div class="row p-0 m-2">
+    <div class="col">
+      <div class="input-group mb-3">
+        <input #filterBox type="text" class="form-control" placeholder="Course"
+          aria-label="Course"
+          aria-describedby="button-addon2">
+        <div class="input-group-append">
+          <button class="btn btn-outline-secondary" type="button"
+            (click)="filterBy(filterBox.value)"
+            id="button-addon2">Search</button>
+        </div>
+      </div>
+    </div>
+    <div class="col">
+      <select class="form-control form-control">
+        <option>Sort By</option>
+      </select>
+    </div>
+  </div>
+  <div class="card text-center p-0 m-2" *ngFor="let item of courses">
+    <div class="card-header bg-primary text-warning">
+
+      {{ item["Course Id"] }}
+    </div>
+    <div class="card-body">
+      <h5 class="card-title">{{ item["Course Name"] }}</h5>
+      <p class="card-text">
+        {{ item["Provider"] }}
+      </p>
+      <div class="border border-dark m-2 rounded">
+        <span class="bg-light">
+          Parent Cousre: {{ item["Parent Subject"] }}
+          Child Course: {{ item["Child Subject"] }}
+        </span>
+      </div>
+      <div>
+        <i class="fas fa-calendar-check"></i>
+        Has Table booking- {{ item["Has Table booking"] }}
+      </div>
+      <div class="shadow-none p-3 mb-5 bg-light rounded">
+        <div>
+          <i class="fas fa-truck"></i> Has Online delivery - {{ item["Has Online
+          delivery"] }}
+        </div>
+        <div>
+          Rating :
+          <span class="badge badge-pill" style='background-color: greenyellow;'>
+            {{item["Next Session Date"] }}
+          </span>
+        </div>
+        <i class="fas fa-signal"></i> {{ item["Length"] }}
+      </div>
+    </div>
+    <div class="card-footer text-muted">
+      <a href='{{ item[" Url" ] }}'>View Details</a>
+    </div>
+  </div>
+  <div class="border">
+    <button type="button" class="btn btn-primary btn-lg btn-block p-2"
+      (click)="loadMore()">Load
+      More</button>
+  </div>
+  <div class="border m-2 p-2">
+    © 2019
+  </div>
+</div>
