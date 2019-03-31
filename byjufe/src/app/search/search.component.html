@@ -1,0 +1,25 @@
+
+<div class="container">
+  <div class="row">
+    <div class="col shadow p-4 mb-4 bg-light" style="margin-top: 10px;">
+      <div class="jumbotron">
+        <h1>Byjus Front-End</h1>
+        <p>Using Bootstrap & Angular</p>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col shadow p-4 mb-4 bg-light" style="margin-top: 10px;">
+      <div class="input-group mb-3">
+        <input #filterBox type="text" class="form-control"
+          placeholder="Search For Courses" (keyup)="0">
+        <div class="input-group-append">
+          <a [routerLink]="[ '/home', filterBox.value ]" class="btn
+            btn-outline-primary">Search</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+</div>

@@ -18,44 +18,63 @@
       </select>
     </div>
   </div>
-  <div class="card text-center p-0 m-2" *ngFor="let item of courses">
-    <div class="card-header bg-primary text-warning">
-
-      {{ item["Course Id"] }}
-    </div>
-    <div class="card-body">
-      <h5 class="card-title">{{ item["Course Name"] }}</h5>
-      <p class="card-text">
-        {{ item["Provider"] }}
-      </p>
-      <div class="border border-dark m-2 rounded">
-        <span class="bg-light">
-          Parent Cousre: {{ item["Parent Subject"] }}
-          Child Course: {{ item["Child Subject"] }}
+  <div class="row p-0 m-2">
+    <div class="col">
+      <div>
+        Number of courses found:
+        <span class="badge badge-pill m-2" style='background-color:
+          darkorange;'>
+          {{ courseCount }}
         </span>
       </div>
-      <div>
-        <i class="fas fa-calendar-check"></i>
-        Has Table booking- {{ item["Has Table booking"] }}
-      </div>
-      <div class="shadow-none p-3 mb-5 bg-light rounded">
-        <div>
-          <i class="fas fa-truck"></i> Has Online delivery - {{ item["Has Online
-          delivery"] }}
-        </div>
-        <div>
-          Rating :
-          <span class="badge badge-pill" style='background-color: greenyellow;'>
-            {{item["Next Session Date"] }}
-          </span>
-        </div>
-        <i class="fas fa-signal"></i> {{ item["Length"] }}
-      </div>
     </div>
-    <div class="card-footer text-muted">
-      <a href='{{ item[" Url" ] }}'>View Details</a>
+    <div class="col">
+      For the course matching:
+      <span class="badge badge-light" style='background-color:
+        cornflowerblue;'>
+        {{ searchedCourse }}
+      </span>
     </div>
   </div>
+  <div lass="row p-0 m-2">
+    <div class="card text-center p-0 m-2" *ngFor="let item of courses">
+      <div class="card-header bg-primary text-warning">
+        Course ID : {{ item["Course Id"] }}
+      </div>
+      <div class="card-body">
+        <h5 class="card-title">{{ item["Course Name"] }}</h5>
+        <p class="card-text">
+          {{ item["Provider"] }}
+        </p>
+        <div class="border border-dark m-2 rounded">
+          <span class="bg-light">
+            <div>
+              Parent Cousre: {{ item["Parent Subject"] }}
+            </div>
+            <div>
+              Child Course: {{ item["Child Subject"] }}
+            </div>
+          </span>
+        </div>
+        {{ item["Universities" ]["Institutions"] }}
+        <div class="shadow-none p-3 mb-5 bg-light rounded">
+          <div class="border border-dark rounded">
+            Next Session :
+            <span class="badge badge-pill m-2" style='background-color:
+              greenyellow;'>
+              {{item["Next Session Date"] }}
+            </span>
+            <i class="fas fa-calendar-check"></i>
+          </div>
+          <i class="fas fa-hourglass-half"></i> {{ item["Length"] }}
+        </div>
+      </div>
+      <div class="card-footer text-muted">
+        <a href='{{ item[" Url" ] }}'>View Details</a>
+      </div>
+    </div>
+  </div>
+
   <div class="border">
     <button type="button" class="btn btn-primary btn-lg btn-block p-2"
       (click)="loadMore()">Load
