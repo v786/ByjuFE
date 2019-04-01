@@ -43,6 +43,19 @@ export class HomeComponent implements OnInit {
     });
     return this.tempList;
   }
+  compare(a, b) {
+    if (a['Length'] < b['Length']) {
+      return -1;
+    } else {
+      return 1;
+    }
+  }
+
+  sortBy(option) {
+    if (option == 'Duration') {
+      this.courses.sort(this.compare);
+    }
+  }
 
   filterBy(value) {
     this.searchedCourse = value;

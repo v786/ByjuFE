@@ -13,9 +13,17 @@
       </div>
     </div>
     <div class="col">
-      <select class="form-control form-control">
-        <option>Sort By</option>
-      </select>
+      <div class="input-group mb-3">
+        <select #sortByOption class="form-control form-control">
+          <option>Sort By</option>
+          <option>Duration</option>
+          <option>Next-Session</option>
+        </select>
+        <div class="input-group-append">
+          <button class="btn btn-outline-secondary"
+            (click)="sortBy(sortByOption.value)">Sort</button>
+        </div>
+      </div>
     </div>
   </div>
   <div class="row p-0 m-2">
@@ -36,7 +44,8 @@
       </span>
     </div>
   </div>
-  <div lass="row p-0 m-2">
+
+  <div class="row p-0 m-1">
     <div class="card text-center p-0 m-2" *ngFor="let item of courses">
       <div class="card-header bg-primary text-warning">
         Course ID : {{ item["Course Id"] }}
@@ -57,7 +66,7 @@
           </span>
         </div>
         {{ item["Universities" ]["Institutions"] }}
-        <div class="shadow-none p-3 mb-5 bg-light rounded">
+        <div class="shadow-none p-3 mb-1 bg-light rounded">
           <div class="border border-dark rounded">
             Next Session :
             <span class="badge badge-pill m-2" style='background-color:
